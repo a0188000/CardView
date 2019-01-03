@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+extension NSObject: Declarative { }
+
+extension Declarative where Self: NSObject {
+    init(configureHandler: (Self) -> Void) {
+        self.init()
+        configureHandler(self)
+    }
+}
